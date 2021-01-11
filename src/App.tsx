@@ -46,12 +46,13 @@ function App({onSave}: AppProps) {
                     setPermissions(CUSTOM_PERMISSIONS);
                     setIsDisabled(false);
                     break;
-            }  
+			}
+			return {currentRole: role, checkboxStates: permissions};  
 		}, [setRole, setPermissions, setIsDisabled]);
 		
     const toggleFolderPermission = useCallback((action: PERMISSIONS_TYPES) => {
         const previousState = permissions[action];
-        setPermissions({...permissions, [action]: {...previousState, folders: {checked: !previousState.folders.checked}}})
+		setPermissions({...permissions, [action]: {...previousState, folders: {checked: !previousState.folders.checked}}})
 	}, [permissions, setPermissions]);
 	
     const toggleGemsPermission = useCallback((action: PERMISSIONS_TYPES) => {
