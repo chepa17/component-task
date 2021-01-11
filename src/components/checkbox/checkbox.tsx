@@ -1,24 +1,38 @@
+import {useCallback} from 'react';
 import classNames from "classnames";
-import { PERMISSIONS_TYPES } from "../../constants/constants";
 import CheckedIcon from '../../materials/check.svg';
 import UncheckedIcon from '../../materials/uncheck.svg';
 
 import './checkbox.css'
 
-export interface CheckBoxProps {
+export interface CheckBoxProps<T extends string> {
     title: string;
-    type: PERMISSIONS_TYPES;
+    type: T;
     checked: boolean;
     disabled: boolean;
-    onChange: (type: PERMISSIONS_TYPES) => void;
+    onChange: (type: T) => void;
 }
  
-const CheckBox: React.FC<CheckBoxProps> = ({title, type, checked, disabled, onChange}) =>
-    <div className={classNames('checkbox-wrapper', {'-withDisabled' : disabled})}>
-        <img src={checked ? CheckedIcon : UncheckedIcon} alt={checked ? 'check' : 'uncheck'}/>
-        <div className={classNames('checkbox-wrapper__title', {'-withChecked' : checked})}>
-            {title}
+const CheckBox = <T extends string>({title, type, checked, disabled, onChange}: CheckBoxProps<T>) => {
+    const onClick = useCallback(() => {
+        if (disabled) {
+            return;
+        }
+
+        onChange(type);
+    }, [disabled, onChange, type]);
+
+    return (
+        <div 
+            className={classNames('checkbox-wrapper', {'-withDisabled' : disabled})}
+            onClick={onClick}
+        >
+            <img src={checked ? CheckedIcon : UncheckedIcon} alt={checked ? 'check' : 'uncheck'}/>
+            <div className={classNames('checkbox-wrapper__title', {'-withChecked' : checked})}>
+                {title}
+            </div>
         </div>
-    </div>
+    );
+}    
  
 export default CheckBox;

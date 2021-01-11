@@ -12,8 +12,9 @@
 
 .checkbox-wrapper__title{
     margin-left: 10px;
+    width: 45px;
 }
 
 .checkbox-wrapper__title.-withChecked{
-    font-weight: bold;
+    font-weight: 600;
 }
