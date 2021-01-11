@@ -4,6 +4,10 @@ body {
     background-color: #F5F5F5;
 }
 
+button {
+    border: none;
+}
+
 .app {
     margin: 7px 16px;
     width: 100%;
@@ -15,4 +19,5 @@ body {
     width: 100%;
     background-color: #FFFFFF;
     margin-bottom: 36px;
+    padding: 20px 22px;
 }
