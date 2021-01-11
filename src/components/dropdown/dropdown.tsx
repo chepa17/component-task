@@ -11,7 +11,6 @@ export interface DropdownProps<T extends string> {
  
 const Dropdown = <T extends string>({currentOption, options, onChange}: DropdownProps<T>) => {
     const [isOptionsShown, setIsOptionsShown] = useState(false);
-    
     const toggleOptions = useCallback(() => {
         setIsOptionsShown(!isOptionsShown)
     }, [isOptionsShown, setIsOptionsShown]);
@@ -36,7 +35,7 @@ const Dropdown = <T extends string>({currentOption, options, onChange}: Dropdown
                     <button 
                         type='button' 
                         className='dropdown__option' 
-                        onClick={option => chooseOption(option)}
+                        onClick={() => chooseOption(option)}
                         key={option}
                     >
                         {option}

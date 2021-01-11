@@ -10,14 +10,16 @@ button {
 
 .app {
     margin: 7px 16px;
-    width: 100%;
     display: block;
     
 }
 
 .container {
-    width: 100%;
     background-color: #FFFFFF;
     margin-bottom: 36px;
-    padding: 20px 22px;
+    padding: 0 22px;
+}
+
+.permitions-list {
+    display: flex;
 }
